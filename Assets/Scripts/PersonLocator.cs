@@ -25,6 +25,28 @@ public class PersonLocator : MonoBehaviour
         //GameObject.Instantiate(person_template, new Vector3(init_pos_x, init_pos_y, init_pos_z);
     }
 
+    void start_udp() {
+        UdpClient server_listener;
+        IPEndPoint server_end_point;
+        byte[] buffer;
+        //Data variable
+
+        string ip_to_listen = "192.168.2.1";
+        bool ip_parse_success = IPAddress.TryParse(ip_to_listen, out IPAddress parsed_listening_ip);
+
+        server_end_point = new IPEndPoint(parsed_listening_ip, 3000);
+        server_listener = new UdpClient(3000);
+
+
+        buffer = server_listener.Receive(ref server_end_point);
+
+
+        server_listener.Close();
+
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
