@@ -25,14 +25,44 @@ public class CameraLook : MonoBehaviour {
 	public GameObject CameraGameObject;
 	public GameObject ActualCamera;
 
-	void Update () {
-	    if (Input.GetKey(KeyCode.Mouse1)) {
+    void Start() {
+        cam_rotation();    
+    }
+
+    void Update() {
+        if (Input.GetKey(KeyCode.Mouse1)) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             cam_rotation();
-        }	
-        if (Input.GetKey(KeyCode.Mouse2)) {
-            Panning();
+        } else if (Input.GetKeyUp(KeyCode.Mouse1)) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
+        if (Input.GetKey(KeyCode.Mouse2)) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Panning();
+        } else if (Input.GetKeyUp(KeyCode.Mouse2)) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        Zooming();
 	}
+
+    void Zooming() {
+        var height = Input.mouseScrollDelta.y;
+        int movement = 0;
+
+        if (height > 0) {
+            movement = 2;
+        } else if (height < 0) {
+            movement = -2;
+        }
+
+        CameraGameObject.transform.Translate(new Vector3(0, movement, 0));
+        
+    }
 
     void Panning() {
         var x = CrossPlatformInputManager.GetAxis("Mouse X");
@@ -41,16 +71,16 @@ public class CameraLook : MonoBehaviour {
         int new_x = 0;
         int new_y = 0;
 
-        if (x > 2) {
-            new_x = 1;
-        } else if (x < -2) {
-            new_x = -1;
+        if (x > 1) {
+            new_x = 2;
+        } else if (x < -1) {
+            new_x = -2;
         }
 
-        if (y > 2) {
-            new_y = 1;
-        } else if (y < -2) {
-            new_y = -1;
+        if (y > 1) {
+            new_y = 2;
+        } else if (y < -1) {
+            new_y = -2;
         }
 
         CameraGameObject.transform.Translate(new Vector3(new_x, 0, new_y));

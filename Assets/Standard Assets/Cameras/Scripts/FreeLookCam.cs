@@ -117,6 +117,7 @@ namespace UnityStandardAssets.Cameras
             {
                 // For tilt input, we need to behave differently depending on whether we're using mouse or touch input:
                 // on mobile, vertical input is directly mapped to tilt value, so it springs back automatically when the look input is released
+                // on mobile, vertical input is directly mapped to tilt value, so it springs back automatically when the look input is released
                 // we have to test whether above or below zero because we want to auto-return to zero even if min and max are not symmetrical.
                 m_TiltAngle = y > 0 ? Mathf.Lerp(0, -m_TiltMin, y) : Mathf.Lerp(0, m_TiltMax, -y);
             }
