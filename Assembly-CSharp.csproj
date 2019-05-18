@@ -69,9 +69,8 @@
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Scripts\CameraLook.cs" />
-    <Compile Include="Assets\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\Scripts\MCUClick.cs" />
-    <Compile Include="Assets\Scripts\PersonClick.cs" />
+    <Compile Include="Assets\Scripts\MCUData.cs" />
+    <Compile Include="Assets\Scripts\PersonData.cs" />
     <Compile Include="Assets\Scripts\ToggleClick.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">

@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class CameraLook : MonoBehaviour {
+public class CameraLook : MonoBehaviour, IPointerClickHandler {
+    public void OnPointerClick(PointerEventData click) {
+        if (click.button == PointerEventData.InputButton.Left) {
+            
+        }
+    }
 
-	//public ViewJoystick VJoystick;
+    public GameObject SurvivorName;
+    public GameObject Strength;
 
-	Vector2 mouseLook;
+    Vector2 mouseLook;
 	Vector2 smoothV;
 	Vector2 FinalRot;
 
@@ -26,7 +34,9 @@ public class CameraLook : MonoBehaviour {
 	public GameObject ActualCamera;
 
     void Start() {
-        cam_rotation();    
+        cam_rotation();
+        SurvivorName.transform.GetComponent<Text>().text = "";
+        Strength.transform.GetComponent<Text>().text = "";
     }
 
     void Update() {
@@ -37,6 +47,8 @@ public class CameraLook : MonoBehaviour {
         } else if (Input.GetKeyUp(KeyCode.Mouse1)) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        } else if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            click();
         }
         if (Input.GetKey(KeyCode.Mouse2)) {
             Cursor.lockState = CursorLockMode.Locked;
@@ -45,10 +57,32 @@ public class CameraLook : MonoBehaviour {
         } else if (Input.GetKeyUp(KeyCode.Mouse2)) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        } else if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            click();
         }
 
         Zooming();
 	}
+
+    void click() {
+        Ray MouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit HitPoint;
+
+        Debug.Log("clicked");
+
+        if (Physics.Raycast(MouseRay, out HitPoint, Mathf.Infinity)) {
+            if (HitPoint.collider.tag == "PersonTag") {
+                Debug.Log(HitPoint.collider.transform.GetComponent<PersonData>().person_name +
+                    ", " + HitPoint.collider.transform.GetComponent<PersonData>().signal_strength);
+
+                SurvivorName.transform.GetComponent<Text>().text = HitPoint.collider.transform.GetComponent<PersonData>().person_name;
+                Strength.transform.GetComponent<Text>().text = HitPoint.collider.transform.GetComponent<PersonData>().signal_strength.ToString();
+
+            } else {
+                Debug.Log("wrong hit");
+            }
+        }
+    }
 
     void Zooming() {
         var height = Input.mouseScrollDelta.y;
@@ -85,7 +119,7 @@ public class CameraLook : MonoBehaviour {
 
         CameraGameObject.transform.Translate(new Vector3(new_x, 0, new_y));
 
-        Debug.Log("X: " + x + ", Y: " + y);
+        //Debug.Log("X: " + x + ", Y: " + y);
     }
 
     void cam_rotation() {
