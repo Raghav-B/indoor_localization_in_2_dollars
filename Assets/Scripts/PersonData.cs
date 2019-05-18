@@ -11,12 +11,13 @@ public class PersonData : MonoBehaviour
 
     public Transform camera_transform;
 
-    
     // Start is called before the first frame update
     void Start()
     {
         gameObject.transform.GetChild(1).GetChild(0).GetChild(3).GetComponent<Text>().text = person_name;
         gameObject.transform.GetChild(1).GetChild(0).GetChild(4).GetComponent<Text>().text = signal_strength.ToString();
+
+        camera_transform = GameObject.FindGameObjectWithTag("RealCamera").transform;
     }
 
     // Update is called once per frame
