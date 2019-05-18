@@ -21,6 +21,12 @@ public class PersonLocator : MonoBehaviour
     Thread udp_thread;
 
 
+    string prev_output = "";
+    string output = "";
+
+    float new_pos_x = 0;
+    float new_pos_z = 0;
+
     void Start()
     {
         cur_person = GameObject.Instantiate(person_template);
@@ -29,10 +35,11 @@ public class PersonLocator : MonoBehaviour
         udp_thread = new Thread(new ThreadStart(start_udp));
         udp_thread.SetApartmentState(ApartmentState.STA);
         udp_thread.Start();
+
+        new_pos_x = cur_person.transform.position.x;
+        new_pos_z = cur_person.transform.position.z;
         //GameObject.Instantiate(person_template, new Vector3(init_pos_x, init_pos_y, init_pos_z);
     }
-
-
 
     void start_udp() {
         while (true) {
@@ -47,34 +54,31 @@ public class PersonLocator : MonoBehaviour
             server_end_point = new IPEndPoint(parsed_listening_ip, 3000);
             server_listener = new UdpClient(3000);
 
-
             buffer = server_listener.Receive(ref server_end_point);
-            string output = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
+
+            output = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
+            if (prev_output != output) {
+                new_pos_x = Int32.Parse(output.Substring(0, 3));
+                new_pos_z = Int32.Parse(output.Substring(4, 3));
+            }
+            prev_output = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
 
             Debug.Log(output);
 
             server_listener.Close();
-
         }
     }
-
-
 
     // Update is called once per frame
     void Update()
     {
-        //whenever update signal is sent, perform a graphical update
-        if (Input.GetKey(KeyCode.Space)) {
-            int new_pos_x = 10;
-            int new_pos_z = 10;
-            cur_person.transform.position = Vector3.MoveTowards(cur_person.transform.position, new Vector3(new_pos_x, 0, new_pos_z), 0.2f);
-        }
-
         if (Input.GetKeyUp(KeyCode.Return)) {
             udp_thread.Abort();
         } else if (Input.GetKeyUp(KeyCode.RightShift)) {
             udp_thread.Start();
         }
- 
+
+        cur_person.transform.position = Vector3.MoveTowards(cur_person.transform.position, new Vector3(new_pos_x, 0, new_pos_z), 0.2f);
+
     }
 }
