@@ -35,8 +35,8 @@ public class CameraLook : MonoBehaviour, IPointerClickHandler {
 
     void Start() {
         cam_rotation();
-        SurvivorName.transform.GetComponent<Text>().text = "";
-        Strength.transform.GetComponent<Text>().text = "";
+        //SurvivorName.transform.GetComponent<Text>().text = "";
+        //Strength.transform.GetComponent<Text>().text = "";
     }
 
     void Update() {
@@ -72,11 +72,11 @@ public class CameraLook : MonoBehaviour, IPointerClickHandler {
 
         if (Physics.Raycast(MouseRay, out HitPoint, Mathf.Infinity)) {
             if (HitPoint.collider.tag == "PersonTag") {
-                Debug.Log(HitPoint.collider.transform.GetComponent<PersonData>().person_name +
-                    ", " + HitPoint.collider.transform.GetComponent<PersonData>().signal_strength);
+                //Debug.Log(HitPoint.collider.transform.GetComponent<PersonData>().person_name +
+                //    ", " + HitPoint.collider.transform.GetComponent<PersonData>().signal_strength);
 
-                SurvivorName.transform.GetComponent<Text>().text = HitPoint.collider.transform.GetComponent<PersonData>().person_name;
-                Strength.transform.GetComponent<Text>().text = HitPoint.collider.transform.GetComponent<PersonData>().signal_strength.ToString();
+                //SurvivorName.transform.GetComponent<Text>().text = HitPoint.collider.transform.GetComponent<PersonData>().person_name;
+                //Strength.transform.GetComponent<Text>().text = HitPoint.collider.transform.GetComponent<PersonData>().signal_strength.ToString();
 
             } else {
                 Debug.Log("wrong hit");
