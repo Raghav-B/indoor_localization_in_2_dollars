@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/Raghav Bhardwaj/Desktop/final/IndoorLocalization.exe
+C:/Users/Raghav Bhardwaj/Desktop/indoor_localization_in_2_dollars/Build/IndoorLocalization.exe
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
@@ -157,6 +157,7 @@ dc0c855440d59a516315a62ef55d7fd8 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 f03168bb2f3505e6cc0ba61aff5d31ab Assembly-CSharp-firstpass.dll:UnityStandardAssets.Cameras.LookatTarget
 c88c4199b288356ec3eb2f0d85abc619 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.ButtonHandler
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.UdpTest
 0e0c7e6c34f2d19ba95cf463e39888b1 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.HeadBob
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl
 a4d879eed97e8d86fd752672fc026fa2 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
@@ -253,4 +254,3 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 62911d9a341ca5ef05c0b4358b36a0d2 Assembly-CSharp.dll:.ToggleClick
 5e869f601eca6873b969dceef87d6303 Assembly-CSharp-firstpass.dll:UnityStandardAssets._2D.PlatformerCharacter2D
 47cd05cf11ce8beb2fd9a1522f58f5ec Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.UdpTest

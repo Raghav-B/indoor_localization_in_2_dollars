@@ -284,7 +284,8 @@ public class PersonLocator : MonoBehaviour
 
         try {
             //string[] lines = File.ReadAllLines(@"C:\Users\rishi\OneDrive\Desktop\myfile.txt");
-            string[] lines = File.ReadAllLines(@"C:\Users\myfile.txt");
+            //string[] lines = File.ReadAllLines(@"C:\Users\myfile.txt");
+            string[] lines = File.ReadAllLines(Path.GetFullPath("./") + "myfile.txt");
             new_pos_x = Int32.Parse(lines[0]);
             new_pos_z = Int32.Parse(lines[1]);
             
