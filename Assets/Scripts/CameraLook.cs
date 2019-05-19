@@ -68,7 +68,7 @@ public class CameraLook : MonoBehaviour, IPointerClickHandler {
         Ray MouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit HitPoint;
 
-        Debug.Log("clicked");
+        //Debug.Log("clicked");
 
         if (Physics.Raycast(MouseRay, out HitPoint, Mathf.Infinity)) {
             if (HitPoint.collider.tag == "PersonTag") {

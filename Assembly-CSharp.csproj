@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\PersonLocator.cs" />
     <Compile Include="Assets\Scripts\ShortestPath.cs" />
     <Compile Include="Assets\Scripts\ToggleClick.cs" />
+    <Compile Include="Assets\Scripts\UdpTest.cs" />
     <Compile Include="Assets\Unity3d_MQTT-master\Assets\MQTT\scripts\Exceptions\MqttClientException.cs" />
     <Compile Include="Assets\Unity3d_MQTT-master\Assets\MQTT\scripts\Exceptions\MqttCommunicationException.cs" />
     <Compile Include="Assets\Unity3d_MQTT-master\Assets\MQTT\scripts\Exceptions\MqttConnectionException.cs" />
